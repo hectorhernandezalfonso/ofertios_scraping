@@ -14,7 +14,7 @@ Execute:
 
 While in the folder that contains the scrapy.cfg execute 
 
-    Scrapy crawl spider_name
+    scrapy crawl spider_name
 
 
 Currently avaliable spiders:
