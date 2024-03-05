@@ -1,4 +1,4 @@
-# ofertios_scraping
+# Ofertios scraping Project
 Testing repository for the scraping of Ofertios project.
 
 
@@ -19,5 +19,5 @@ While in the folder that contains the scrapy.cfg execute
 
 Currently avaliable spiders:
 
-    olimpica_despensa - Recovery of all Olimpica products in the category
-    jumbo_despensa - Recovery of all Jumbo products in the category
+    olimpica_spider - Recovery of all Olimpica products in the category
+    jumbo_spider - Recovery of all Jumbo products in the category
