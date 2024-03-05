@@ -4,10 +4,10 @@ Testing repository for the scraping of Ofertios project.
 
 ## Setup:
 
-Execute:
+Install Scrapy with
 
-    pip install REQUIREMENTS.TXT
 
+    pip install scrapy==2.11.1
 
 
 ## Scraping:
