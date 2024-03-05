@@ -43,10 +43,11 @@ class Olimpica_despensa_Spider(scrapy.Spider):
                 'Nombre': producto.css('div.vtex-product-summary-2-x-nameContainer h3 span::text').get(),
                 'Precio original': precio_original,
                 'Precio descuento': precio_descuento,
-                'URL':  producto.css('a.vtex-product-summary-2-x-clearLink').attrib['href'], 
+                'URL':  'https://www.olimpica.com'+str(producto.css('a.vtex-product-summary-2-x-clearLink').attrib['href']), 
                 'Fecha': fecha,
             }
 """
+Esta sección es funcional y permite el scrapeo de las páginas enteras, está comentada para scrapear solo la primera página
 
         self.contador += 1
         if self.contador <=50:
