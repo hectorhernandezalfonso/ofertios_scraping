@@ -6,7 +6,7 @@ class Jumbo_despensa_Spider(scrapy.Spider):
     name = "jumbo_spider"
     allowed_domains = ["www.tiendasjumbo.co"]
     contador = 1
-    start_urls = ["https://www.tiendasjumbo.co/supermercado/despensa?page="+str(contador)]
+    start_urls = ["https://www.tiendasjumbo.co/tecnologia"+str(contador)]
 
     def parse(self, response):
         # Extracción de JSON con data-varname="__STATE__"
@@ -67,23 +67,27 @@ class Jumbo_despensa_Spider(scrapy.Spider):
                     # Yield scrapy.Item para devolver bn
                     yield {
                         'Nombre: ': product_name,
-                        'Marca: ': brand,
+                        #'Marca: ': brand,
                         'Descripcion: ': description,
                         'link: ': "https://www.tiendasjumbo.co"+str(link),
                         'precio_alto': high_price,
-                        'precio_bajo: ': low_price
+                        'precio_bajo: ': low_price,
+                        'Almacen': "Jumbo",
                     }
-
+                    #print()
+                    #print("Nombre: "+str(product_name))
+                    #print("Marca: "+str(brand) )
+                    #print("Descripción: "+str(description))
+                    #print("Link: "+"https://www.tiendasjumbo.co"+str(link))
+                    #print("Precio: "+ str(high_price))
+                    #print()
                 # Eliminar el archivo jumbo.json al finalizar
                 os.remove('jumbo.json')
 
-
-""""" 
-ESTO YA FUNCIONA ESTA COMENTADO CON EL PROPOSITO DE QUE NO SE TARDE MUCHO CUANDO SCRAPEA
+#ESTO YA FUNCIONA ESTA COMENTADO CON EL PROPOSITO DE QUE NO SE TARDE MUCHO CUANDO SCRAPEA
 
         self.contador += 1
         if self.contador <=50:
             next_page = 'https://www.tiendasjumbo.co/supermercado/despensa?page='+str(self.contador)
             yield response.follow(next_page, callback=self.parse)
 
-"""   
