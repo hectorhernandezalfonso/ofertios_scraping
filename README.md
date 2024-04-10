@@ -14,10 +14,12 @@ Install Scrapy with
 
 While in the folder that contains the scrapy.cfg execute 
 
-    scrapy crawl spider_name
+    ./start__scraping.sh
 
 
-Currently avaliable spiders:
 
-    olimpica_spider - Recovery of all Olimpica products in the category
-    jumbo_spider - Recovery of all Jumbo products in the category
+## Database Connection
+
+To modify the database connection go to the pipelines.py file and modify the function:
+
+    SavingToPostgresPipeline
