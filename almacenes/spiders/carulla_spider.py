@@ -2,8 +2,11 @@ import scrapy
 import json
 import html
 import re
+from datetime import date
 
-from datetime import datetime
+#ESTA MKDA SACARLA COMO
+
+#scrapy crawl carulla_spider -o output.json
 
 
 
@@ -43,23 +46,19 @@ class CarullaSpiderSpider(scrapy.Spider):
                     description = pattern.sub('', strings)
                 else:
                     description = 'No description'  # Or simply set it to an empty string
-                current_date = datetime.now()
-                fecha = current_date.strftime('%d-%m-%Y')
-                
+                 
                 yield {
-                    'name': name,
-#                    'description': description,
-                    'image': image,
-                    'low_price': low_price,
-                    'high_price': high_price,
-                    'almacen': "Carulla",
-                    'fecha':fecha,
+                    'Nombre': name,
+                    'Precio original': high_price,
+                    'Precio descuento': low_price,
+                    'Almacen': "Carulla",
+                    'Fecha':str(date.today()),
                     # Include other fields as required
                 }
 
         # Right before the end of your parse method
-#        self.contador += 1
-#        if self.contador <= 70:
-#            next_page = f'https://www.carulla.com/tecnologia?page={self.contador}'
-#            yield response.follow(next_page, callback=self.parse)
+        self.contador += 1
+        if self.contador <= 70:
+            next_page = f'https://www.carulla.com/tecnologia?page={self.contador}'
+            yield response.follow(next_page, callback=self.parse)
         # No need to reset contador to 0 here unless it's used elsewhere for a similar purpose
