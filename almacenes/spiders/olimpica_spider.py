@@ -1,5 +1,11 @@
+#ESTA MKDA SACARLA COMO
+
+#scrapy crawl olimpica_spider -o output.json
+
 import scrapy
 from datetime import datetime
+from datetime import date
+
 class Olimpica_despensa_Spider(scrapy.Spider):
 
     #CLASE PARECE ESCALABLE AL MODIFICAR start_urls PARA SCRAPEAR LAS DEMÁS URL QUE MUESTREN PRODUCTOS COMO DESPENSA
@@ -13,11 +19,11 @@ class Olimpica_despensa_Spider(scrapy.Spider):
                   "https://www.olimpica.com/electrodomesticos-y-tecnologia/electro-hogar/neveras?page="+str(contador),
                   "https://www.olimpica.com/electrodomesticos-y-tecnologia/electro-hogar/lavadoras?page="+str(contador),
                   "https://www.olimpica.com/electrodomesticos-y-tecnologia/electro-hogar/aires-acondicionados?page="+str(contador),
-                  "https://www.olimpica.com/electrodomesticos-y-tecnologia/electro-hogar/estufas-y-empotrables?page="+str(contador),
+                  #"https://www.olimpica.com/electrodomesticos-y-tecnologia/electro-hogar/estufas-y-empotrables?page="+str(contador),
                   #"https://www.olimpica.com/cuidado-personal?page="+str(contador),
-                  "https://www.olimpica.com/electrodomesticos-y-tecnologia/comunicaciones/celulares?page="+str(contador),
+                  #"https://www.olimpica.com/electrodomesticos-y-tecnologia/comunicaciones/celulares?page="+str(contador),
                   #"https://www.olimpica.com/electrodomesticos-y-tecnologia/electro-hogar/pequenos-electrodomesticos?page="+str(contador),
-                  "https://www.olimpica.com/electrodomesticos-y-tecnologia/tv-audio-y-video/televisores?page="+str(contador),
+                  #"https://www.olimpica.com/electrodomesticos-y-tecnologia/tv-audio-y-video/televisores?page="+str(contador),
                   #"https://www.olimpica.com/electrodomesticos-y-tecnologia/accesorios-de-informatica/impresoras-y-suministros?page="+str(contador),
                   #"https://www.olimpica.com/electrodomesticos-y-tecnologia/tv-audio-y-video/equipos-de-audio/aiwa/bose/jbl/lg/olimpo/samsung/sonos?initialMap=c,c,c&initialQuery=electrodomesticos-y-tecnologia/tv-audio-y-video/equipos-de-audio&map=category-1,category-2,category-3,brand,brand,brand,brand,brand,brand,brand&order=OrderByTopSaleDESC?page="+str(contador),
                   #"https://www.olimpica.com/16372?map=productClusterIds?page="+str(contador),
@@ -96,12 +102,11 @@ class Olimpica_despensa_Spider(scrapy.Spider):
             
             #Selecciona los campos faltantes y devuelve todo en ese formato
             yield {
-            'name': producto.css('div.vtex-product-summary-2-x-nameContainer h3 span::text').get(),
-            'image': producto.xpath(".//@src").get(),  # Add the image URL to the yielded data
-            'low_price': precio_descuento,
-            'high_price': precio_original,
-            'almacen': "Olimpica",
-            'fecha': fecha,
+            'Nombre': producto.css('div.vtex-product-summary-2-x-nameContainer h3 span::text').get(),
+            'Precio original': precio_original,
+            'Precio descuento': precio_descuento,
+            'Almacen': "Olimpica",
+            'Fecha': str(date.today()),
             
         }
             
